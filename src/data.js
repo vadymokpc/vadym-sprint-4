@@ -1,5 +1,4 @@
-const movies = [
-  {
+const movies = [{
     title: 'The Shawshank Redemption',
     year: 1994,
     director: 'Frank Darabont',
@@ -424,8 +423,7 @@ const movies = [
     score: 8.5
   },
   {
-    title:
-      'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+    title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
     year: 1964,
     director: 'Stanley Kubrick',
     duration: '1h 35min',
