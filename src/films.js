@@ -37,14 +37,32 @@ function moviesAverageOfDirector(array, director) {
 }
 
 // Exercise 4:  Orden alfabético por título 
-function orderAlphabetically(array) {
 
-}
+function orderAlphabetically(array) {
+  /*  return array.sort((a, b) => {
+     return a.title - b.title;
+   }) */
+  const titulos = array.map(item => item.title).sort().slice(0, 20);
+  return titulos;
+};
 
 // Exercise 5: Orden por año, ascendente
-function orderByYear() {
+function orderByYear(array) {
+  const arrayCopy = array.slice();
+  const peliculesOrdenadasPorTitulo = arrayCopy.sort((a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  });
 
-}
+  const peliculasOrdenadasPorAno = peliculesOrdenadasPorTitulo.sort((a, b) => a.year - b.year);
+
+  return peliculasOrdenadasPorAno;
+};
 
 // Exercise 6: Calcular el promedio de las películas en una categoría
 function moviesAverageByCategory() {
