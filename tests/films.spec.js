@@ -404,7 +404,7 @@ describe('Function "orderByYear"', () => {
     ]);
   });
 });
-/*
+
 // Exercise 6
 describe('Function "moviesAverageByCategory"', () => {
   it('should be declared', () => {
@@ -416,97 +416,112 @@ describe('Function "moviesAverageByCategory"', () => {
   });
 
   it(' should return the average score of 2 movies with score 7 each', () => {
-    expect(moviesAverageByCategory([
-      { score: 7,
-        genre: ['Drama'], 
-      },
-      { score: 7,
-        genre: ['Drama'], 
-      }
-    ],
-    'Drama')).toBe(7);
+    expect(moviesAverageByCategory([{
+          score: 7,
+          genre: ['Drama'],
+        },
+        {
+          score: 7,
+          genre: ['Drama'],
+        }
+      ],
+      'Drama')).toBe(7);
   });
 
   it('should be rounded to 2 decimals places', () => {
-    expect(moviesAverageByCategory([
-      { score: 7,
-        genre: ['Drama'], 
-      },
-      { score: 6,
-        genre: ['Drama'], 
-      }
-    ],
-    'Drama')).toBe(6.50);
+    expect(moviesAverageByCategory([{
+          score: 7,
+          genre: ['Drama'],
+        },
+        {
+          score: 6,
+          genre: ['Drama'],
+        }
+      ],
+      'Drama')).toBe(6.50);
   });
 
   it('should not take into consideration films of other category', () => {
-    expect(moviesAverageByCategory([
-      { score: 5,
-        genre: ['Drama'], 
-      },
-      { score: 10,
-        genre: ['Action'], 
-      },
-      { score: 10,
-        genre: ['Action'], 
-      }
-    ],
-    'Action')).toBe(10);
+    expect(moviesAverageByCategory([{
+          score: 5,
+          genre: ['Drama'],
+        },
+        {
+          score: 10,
+          genre: ['Action'],
+        },
+        {
+          score: 10,
+          genre: ['Action'],
+        }
+      ],
+      'Action')).toBe(10);
   });
 
-  /* Bug fixing, to review 
-  it('should return average even if one of the movies does not have score', () => {
-    expect(moviesAverageByCategory([{ score: 6 }, { score: '' }, {}])).toBe(2);
+  //Bug fixing, to review
+  /*   it('should return average even if one of the movies does not have score', () => {
+      expect(moviesAverageByCategory([{
+        score: 6
+      }, {
+        score: ''
+      }, {}])).toBe(2);
+    }); */
+
+  /*   it('should return average even if one of the movies does not have score', () => {
+      expect(moviesAverageByCategory([{
+            score: 5,
+            genre: ['Action'],
+          },
+          {
+            score: '',
+            genre: ['Action'],
+          }
+        ],
+        'Action')).toBe(5);
+    });
+   */
+});
+
+// Exercise 7
+describe('Function "hoursToMinutes"', () => {
+  it('should be declared', () => {
+    expect(typeof hoursToMinutes).toBe('function');
   });
-  */
-/*  it('should return average even if one of the movies does not have score', () => {
-          expect(moviesAverageByCategory([
-            { score: 5,
-              genre: ['Action'], 
-            },
-            { score: '',
-              genre: ['Action'], 
-            }
-          ],
-          'Action')).toBe(5);
-        });
 
-      });
+  it('should return an array', () => {
+    expect(hoursToMinutes(movies) instanceof Array).toBe(true);
+  });
 
-      // Exercise 7
-      describe('Function "hoursToMinutes"', () => {
-        it('should be declared', () => {
-          expect(typeof hoursToMinutes).toBe('function');
-        });
+  it('should return a new array, not update the original one', () => {
+    expect(hoursToMinutes(movies)).not.toEqual(movies);
+  });
 
-        it('should return an array', () => {
-          expect(hoursToMinutes(movies) instanceof Array).toBe(true);
-        });
+  it('should return an array of movies with duration as a number', () => {
+    expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
+  });
 
-        it('should return a new array, not update the original one', () => {
-          expect(hoursToMinutes(movies)).not.toEqual(movies);
-        });
+  it('should return an array of movies with the correct duration for a 31 minute movie', () => {
+    const movieTry = [{
+      duration: '0h 31min'
+    }];
+    expect(hoursToMinutes(movieTry)[0].duration).toBe(31);
+  });
 
-        it('should return an array of movies with duration as a number', () => {
-          expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
-        });
+  it('should return an array of movies with the correct duration for a 341 minute movie', () => {
+    const movieTry = [{
+      duration: '5h 41min'
+    }];
+    expect(hoursToMinutes(movieTry)[0].duration).toBe(341);
+  });
 
-        it('should return an array of movies with the correct duration for a 31 minute movie', () => {
-          const movieTry = [{ duration: '0h 31min' }];
-          expect(hoursToMinutes(movieTry)[0].duration).toBe(31);
-        });
-
-        it('should return an array of movies with the correct duration for a 341 minute movie', () => {
-          const movieTry = [{ duration: '5h 41min' }];
-          expect(hoursToMinutes(movieTry)[0].duration).toBe(341);
-        });
-
-        it('should return an array of movies with the correct duration for a 2 hour movie', () => {
-          const movieTry = [{ duration: '2h' }];
-          expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
-        });
-      });
-
+  it('should return an array of movies with the correct duration for a 2 hour movie', () => {
+    const movieTry = [{
+      duration: '2h'
+    }];
+    expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
+  });
+});
+/*
       // Exercise 8
       describe('Function "bestFilmOfYear"', () => {
         it('should be declared', () => {
